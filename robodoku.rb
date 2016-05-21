@@ -1,29 +1,29 @@
-board = Array.new(9) { Array.new(9) }
-def boucle_jeu(board)
-  pour chaque item
-    calcul_charge
-    test_item_plus_rempli
+# board = Array.new(9) { Array.new(9) }
+# def boucle_jeu(board)
+#   pour chaque item
+#     calcul_charge
+#     test_item_plus_rempli
   
 
-end
+# end
 
-def test_unicite(item)
-  item.inject(Hash.new(0)) do
-    |mem, val| mem[val] += 1
-    return false if mem.values.any?{|v| v > 1 }
-  end
-end
-def test_ligne(row)
+# def test_unicite(item)
+#   item.inject(Hash.new(0)) do
+#     |mem, val| mem[val] += 1
+#     return false if mem.values.any?{|v| v > 1 }
+#   end
+# end
+# def test_ligne(row)
   
-end
+# end
 
-def test_col(col)
+# def test_col(col)
 
-end
+# end
 
-def test_square(carre)
+# def test_square(carre)
 
-end
+# end
 class Solver
 	def initialize(puzzle)
 		@puzzle = puzzle
@@ -71,15 +71,29 @@ class Solver
 	end
 
 	def carre(abs, ord)
-		abs / 3
-		ord / 3
+		abs_carr = abs / 3
+		ordo_carr = ord / 3
 		@carre = Array.new(3) { Array.new(3) { 0 } }
-		@tab.each do |x|
-			x.each do |y|
-				@carre << y
+		# @tab.each do |x|
+		# 	x.each do |y|
+		# 		@carre << y
+		# 	end
+		# end
+		# @carre
+		# @carre << @tab[abs_carr..(abs_carr + 2)][ordo_carr..(ordo_carr..ordo_carr+2)]
+		# @tab.map do |x| 
+		# 	if abs_carr
+		# 		x.map do |y| 
+		# 		y 
+		# 	end
+		# end
+		@tab.each_with_index do |e, i|
+			if ( i >= abs_carr or i <= abs_carr + 2 )
+				e.each_with_index do |el, j|
+					@carre << el if ( j >= ordo_carr or j <= ordo_carr + 2  )
+				end
 			end
 		end
-		@carre
 	end
 
 
