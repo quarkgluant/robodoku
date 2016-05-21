@@ -1,0 +1,88 @@
+board = Array.new(9) { Array.new(9) }
+def boucle_jeu(board)
+  pour chaque item
+    calcul_charge
+    test_item_plus_rempli
+  
+
+end
+
+def test_unicite(item)
+  item.inject(Hash.new(0)) do
+    |mem, val| mem[val] += 1
+    return false if mem.values.any?{|v| v > 1 }
+  end
+end
+def test_ligne(row)
+  
+end
+
+def test_col(col)
+
+end
+
+def test_square(carre)
+
+end
+class Solver
+	def initialize(puzzle)
+		@puzzle = puzzle
+	end
+
+	def transformation_en_matrice(puzzle)
+		@tab = Array.new(9) { Array.new(9) { 0 } }
+		@puzzle.each do |car|
+			if car == '\n' or car == '\r\n'
+				i += 1 
+			elsif car == " "
+				@tab[i][j] = 0
+			else
+				@tab[i][j] = car.to_i
+			end
+			j += 1
+		end
+	end
+	
+	def charge(item)
+  		item.length
+	end
+
+		
+
+	def test_unicite(item)
+		# item.inject(Hash.new(0)) do |accu, cell|
+		# 	accu[cell] += 1
+		# 	return false if accu[cell] > 1
+		# end
+		@res = Hash.new(0)
+		item.each do |nombre|
+			@res["#{nombre}"] += 1
+			return false if @res["#{nombre}"] > 1
+		end
+
+	end
+
+	def ligne(abs, ord)
+		@tab[abs]
+	end
+
+	def colonne(abs, ord)
+		@tab.map{|cell| cell[ord]}
+	end
+
+	def carre(abs, ord)
+		abs / 3
+		ord / 3
+		@carre = Array.new(3) { Array.new(3) { 0 } }
+		@tab.each do |x|
+			x.each do |y|
+				@carre << y
+			end
+		end
+		@carre
+	end
+
+
+
+
+end
