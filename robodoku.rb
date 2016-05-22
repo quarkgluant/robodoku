@@ -89,11 +89,13 @@ class Solver
 		# 		y 
 		# 	end
 		# end
+		indx = 0
 		@tab.each_with_index do |e, i|
 			if ( i >= abs_carr or i <= abs_carr + 2 )
 				e.each_with_index do |el, j|
-					@carre << el if ( j >= ordo_carr or j <= ordo_carr + 2  )
+					@carre[indx] << el if ( j >= ordo_carr or j <= ordo_carr + 2  )
 				end
+				indx += 1
 			end
 		end
 	end
