@@ -44,7 +44,9 @@ class Solver
 	end
 	
 	def charge(item)
-  		item.length
+		@compt = 0
+  	item.each{|car| @compt += 1  if car != 0}
+  	@compt
 	end
 
 		
@@ -95,7 +97,9 @@ class Solver
 			end
 		end
 	end
+	def solver
 
+	end
 
 
 
