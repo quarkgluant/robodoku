@@ -44,12 +44,11 @@ class Solver
 	end
 	
 	def charge(item)
-		@compt = 0
-  	item.each{|car| @compt += 1  if car != 0}
-  	@compt
+  	item.inject(0) do |compteur, nb|
+  		nb != 0 ? compteur += 1 : compteur
+ 			end
 	end
 
-		
 
 	def test_unicite(item)
 		# item.inject(Hash.new(0)) do |accu, cell|
