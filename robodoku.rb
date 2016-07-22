@@ -1,3 +1,8 @@
+require_relative 'solver'
+
+filename = ARGV[0]
+puzzle = File.read(filename)
+
 # board = Array.new(9) { Array.new(9) }
 # def boucle_jeu(board)
 #   pour chaque item
@@ -26,37 +31,36 @@
 # end
 
 def transformation_en_matrice(puzzle)
-	@tab = Array.new(9) { Array.new(9) { 0 } }
-	@puzzle.each do |car|
+	tab = Array.new(9) { Array.new(9) { 0 } }
+	puzzle.each do |car|
 		if car == '\n' or car == '\r\n'
 			i += 1 
 		elsif car == " "
-			@tab[i][j] = 0
+			tab[i][j] = 0
 		else
-			@tab[i][j] = car.to_i
+			tab[i][j] = car.to_i
 		end
 		j += 1
 	end
+	tab
 end
 
 def charge(item)
 	item.inject(0) do |compteur, nb|
 		nb != 0 ? compteur += 1 : compteur
-			end
+	end
 end
 
 
 def test_unicite(item)
-	# item.inject(Hash.new(0)) do |accu, cell|
-	# 	accu[cell] += 1
-	# 	return false if accu[cell] > 1
-	# end
 	@res = Hash.new(0)
 	item.each do |nombre|
-		@res["#{nombre}"] += 1
-		return false if @res["#{nombre}"] > 1
+		if nombre != nil
+			@res["#{nombre}"] += 1
+			return false if @res["#{nombre}"] > 1 && nombre != 0
+		end
 	end
-
+	true
 end
 
 def ligne(abs, ord)
@@ -93,8 +97,12 @@ def carre(abs, ord)
 			indx += 1
 		end
 	end
+	@carre
 end
+
+
 def solver
+	sudoku = transformation_en_matrice(puzzle)
 
 end
 

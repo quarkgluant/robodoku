@@ -1,0 +1,41 @@
+```
+8  5 4  7
+  5 3 9  
+ 9 7 1 6
+1 3   2 8
+ 4     5
+2 78136 4
+ 3 9 2 8
+  2 7 5  
+6  3 5  1
+```
+class Solver
+	def initialize(puzzle)
+		@puzzle = puzzle
+	end
+
+	def transformation_en_matrice(puzzle)
+		@tab = Array.new(9) { Array.new(9) { 0 } }
+		@puzzle.each do |car|
+			if car == '\n' or car == '\r\n'
+				i += 1 
+			elsif car == " "
+				@tab[i][j] = 0
+			else
+				@tab[i][j] = car.to_i
+			end
+			j += 1
+		end
+	end
+	
+			
+
+	def test_unicite(item)
+		item.inject(Hash.new(0)) do |accu, cell|
+			accu[cell] += 1
+			return false if accu[cell] > 1
+		end
+	end
+
+
+end
