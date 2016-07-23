@@ -47,7 +47,7 @@ end
 
 def charge(item)
 	item.inject(0) do |compteur, nb|
-		nb != 0 ? compteur += 1 : compteur
+		nb != 0 && nb != nil ? compteur += 1 : compteur
 	end
 end
 
