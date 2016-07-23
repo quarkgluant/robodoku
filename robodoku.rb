@@ -53,11 +53,11 @@ end
 
 
 def test_unicite(item)
-	@res = Hash.new(0)
+	res = Hash.new(0)
 	item.each do |nombre|
 		if nombre != nil
-			@res["#{nombre}"] += 1
-			return false if @res["#{nombre}"] > 1 && nombre != 0
+			res["#{nombre}"] += 1
+			return false if res["#{nombre}"] > 1 && nombre != 0
 		end
 	end
 	true
@@ -74,20 +74,21 @@ end
 def carre(abs, ord)
 	abs_carr = abs / 3
 	ordo_carr = ord / 3
-	@carre = Array.new(3) { Array.new(3) { 0 } }
+	carre = Array.new(3) { Array.new(3) { 0 } }
 	@tab.each_with_index do |e, i|
 		if ( i >= abs_carr and i <= abs_carr + 2 )
 			e.each_with_index do |el, j|
-				@carre[i][j] = el if ( j >= ordo_carr and j <= ordo_carr + 2  ) 
+				carre[i][j] = el if ( j >= ordo_carr and j <= ordo_carr + 2  ) 
 			end
 		end
 	end
-	@carre.flatten
+	carre.flatten
 end
 
 def solver
 	@tab = transformation_en_matrice(puzzle)
-	
+	# pour chaque ligne
+	#  test charge
 
 end
 
