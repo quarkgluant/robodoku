@@ -29,18 +29,23 @@ puzzle = File.read(filename)
 # def test_square(carre)
 
 # end
-
+puzzle =  "8  5 4  7\n  5 3 9  \n 9 7 1 6\n1 3   2 8\n 4     5\n2 78136 4\n 3 9 2 8\n  2 7 5  \n6  3 5  1"
 def transformation_en_matrice(puzzle)
 	tab = Array.new(9) { Array.new(9) { 0 } }
-	puzzle.each do |car|
-		if car == '\n' or car == '\r\n'
-			i += 1 
-		elsif car == " "
-			tab[i][j] = 0
-		else
-			tab[i][j] = car.to_i
+	i, j = 0,0
+	puzzle.each_char do |car|
+		if not car.nil?
+			if car =~ /[1-9]/ 
+					tab[i][j] = car.to_i
+					j += 1
+			elsif car == " "
+					tab[i][j] = 0
+					j += 1
+			else
+				i += 1
+				j = 0 
+			end
 		end
-		j += 1
 	end
 	tab
 end
