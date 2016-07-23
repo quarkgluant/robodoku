@@ -87,7 +87,7 @@ end
 
 def solver
 	@tab = transformation_en_matrice(puzzle)
-
+	
 
 end
 
