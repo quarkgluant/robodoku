@@ -3,7 +3,6 @@ require_relative 'solver'
 filename = ARGV[0]
 puzzle = File.read(filename)
 
-# board = Array.new(9) { Array.new(9) }
 # def boucle_jeu(board)
 #   pour chaque item
 #     calcul_charge
@@ -12,12 +11,8 @@ puzzle = File.read(filename)
 
 # end
 
-# def test_unicite(item)
-#   item.inject(Hash.new(0)) do
-#     |mem, val| mem[val] += 1
-#     return false if mem.values.any?{|v| v > 1 }
-#   end
-# end
+
+
 # def test_ligne(row)
   
 # end
@@ -75,21 +70,7 @@ end
 def colonne(abs, ord)
 	@tab.map{|cell| cell[ord]}
 end
-#def carre(abs, ord)
-	# @tab.each do |x|
-	# 	x.each do |y|
-	# 		@carre << y
-	# 	end
-	# end
-	# @carre
-	# @carre << @tab[abs_carr..(abs_carr + 2)][ordo_carr..(ordo_carr..ordo_carr+2)]
-	# @tab.map do |x| 
-	# 	if abs_carr
-	# 		x.map do |y| 
-	# 		y 
-	# 	end
-	# end
-#end
+
 def carre(abs, ord)
 	abs_carr = abs / 3
 	ordo_carr = ord / 3
@@ -101,11 +82,12 @@ def carre(abs, ord)
 			end
 		end
 	end
-	@carre
+	@carre.flatten
 end
 
 def solver
-	sudoku = transformation_en_matrice(puzzle)
+	@tab = transformation_en_matrice(puzzle)
+
 
 end
 
