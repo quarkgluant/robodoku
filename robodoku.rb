@@ -75,11 +75,7 @@ end
 def colonne(abs, ord)
 	@tab.map{|cell| cell[ord]}
 end
-
-def carre(abs, ord)
-	abs_carr = abs / 3
-	ordo_carr = ord / 3
-	@carre = Array.new(3) { Array.new(3) { 0 } }
+#def carre(abs, ord)
 	# @tab.each do |x|
 	# 	x.each do |y|
 	# 		@carre << y
@@ -93,18 +89,20 @@ def carre(abs, ord)
 	# 		y 
 	# 	end
 	# end
-	indx = 0
+#end
+def carre(abs, ord)
+	abs_carr = abs / 3
+	ordo_carr = ord / 3
+	@carre = Array.new(3) { Array.new(3) { 0 } }
 	@tab.each_with_index do |e, i|
-		if ( i >= abs_carr or i <= abs_carr + 2 )
+		if ( i >= abs_carr and i <= abs_carr + 2 )
 			e.each_with_index do |el, j|
-				@carre[indx] << el if ( j >= ordo_carr or j <= ordo_carr + 2  )
+				@carre[i][j] = el if ( j >= ordo_carr and j <= ordo_carr + 2  ) 
 			end
-			indx += 1
 		end
 	end
 	@carre
 end
-
 
 def solver
 	sudoku = transformation_en_matrice(puzzle)
