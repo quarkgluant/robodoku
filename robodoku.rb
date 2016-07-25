@@ -87,8 +87,13 @@ end
 
 def solver
 	@tab = transformation_en_matrice(puzzle)
-	# pour chaque ligne
-	#  test charge
-
+	charge_lig_col_car = Hash.new { 0 }
+	@tab.each_with_index do |lign, i|
+		lign.each_with_index do |val, j|
+			if @tab[i, j] == 0
+				charge_lig_col_car["#{i}#{j}"] = [charge(ligne(i, j)), charge(colonne(i, j)), charge(carre(i,j))]
+			end
+		end
+	end
 end
 
