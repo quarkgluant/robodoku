@@ -78,7 +78,7 @@ def carre(abs, ord)
 	@tab.each_with_index do |e, i|
 		if ( i >= abs_carr and i <= abs_carr + 2 )
 			e.each_with_index do |el, j|
-				carre[i][j] = el if ( j >= ordo_carr and j <= ordo_carr + 2  ) 
+				carre[i][j] = el if ( j >= ordo_carr and j <= ordo_carr + 2  ) and el != nil
 			end
 		end
 	end
