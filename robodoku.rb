@@ -101,3 +101,5 @@ def solver(puzzle)
 	charge_lig_col_car
 end
 
+
+
