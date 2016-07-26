@@ -72,28 +72,32 @@ def colonne(abs, ord)
 end
 
 def carre(abs, ord)
-	abs_carr = abs / 3
-	ordo_carr = ord / 3
-	carre = Array.new(3) { Array.new(3) { 0 } }
+	abs_carr = (abs / 3) * 3
+	ordo_carr = (ord / 3) * 3
+	carre = []
 	@tab.each_with_index do |e, i|
-		if ( i >= abs_carr and i <= abs_carr + 2 )
+		if i >= abs_carr and i <= abs_carr + 2
 			e.each_with_index do |el, j|
-				carre[i][j] = el if ( j >= ordo_carr and j <= ordo_carr + 2  ) and el != nil
+				if  j >= ordo_carr and j <= ordo_carr + 2  and el != nil
+					# puts "coordonnées (#{i},#{j}) #{abs_carr} #{ordo_carr} el=#{el}"
+					carre << el
+				end 
 			end
 		end
 	end
-	carre.flatten
+	carre
 end
 
-def solver
+def solver(puzzle)
 	@tab = transformation_en_matrice(puzzle)
 	charge_lig_col_car = Hash.new { 0 }
 	@tab.each_with_index do |lign, i|
 		lign.each_with_index do |val, j|
-			if @tab[i, j] == 0
+			if @tab[i][j] == 0
 				charge_lig_col_car["#{i}#{j}"] = [charge(ligne(i, j)), charge(colonne(i, j)), charge(carre(i,j))]
 			end
 		end
 	end
+	charge_lig_col_car
 end
 
